@@ -3,6 +3,7 @@
 let player1Score = 0
 let player2Score = 0
 let player1Turn = true
+let round = 2
 
 // Create variables to store references to the necessary DOM nodes
 const player1DiceEl = document.getElementById("player1Dice")
@@ -10,12 +11,13 @@ const player2DiceEl = document.getElementById("player2Dice")
 const player1ScoreboardEL = document.getElementById("player1Scoreboard")
 const player2ScoreboardEL = document.getElementById("player2Scoreboard")
 const messageEl = document.getElementById("message")
+const roundEl = document.getElementById("round")
 const rollBtnEl = document.getElementById("rollBtn")
 const resetBtnEl = document.getElementById("resetBtn")
 
 rollBtnEl.addEventListener("click", function () {
     let randomNumber = Math.floor(Math.random()*6)+1
-
+    roundEl.innerText = `Round ${Math.floor(round/2)}`
     clearActive()
     if(player1Turn){
         player1Score += randomNumber
@@ -34,20 +36,21 @@ rollBtnEl.addEventListener("click", function () {
         messageEl.innerText = "Player 1 Turn"
     }
 
+    round++
+
     // check if a player has won
-    if(player1Score > 20 || player2Score > 20){
-        if(player1Score > 20){
-            messageEl.innerText = "Player 1 has won! "
+    if(round == 6){
+        if(player1Score > player2Score){
+            messageEl.innerText = "Player 1 has won!"
             messageEl.style.color = "darkblue"
         }else
         {
-            messageEl.innerText = "Player 2 has won! "
+            messageEl.innerText = "Player 2 has won!"
             messageEl.style.color = "darkblue"
         }
         rollBtnEl.style.display = "none"
         resetBtnEl.style.display = "block"
     }
-
 
     player1Turn = !player1Turn
 })
@@ -60,9 +63,11 @@ resetBtnEl.addEventListener("click", function (){
     player2DiceEl.textContent = '-'
     player1Score = 0
     player2Score = 0
+    round = 0
     player1Turn = true
     resetBtnEl.style.display = "none"
     rollBtnEl.style.display = "block"
+    roundEl.innerText = "Round 1"
     player2DiceEl.classList.remove("active")
     player1DiceEl.classList.add("active")
 })

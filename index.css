@@ -8,6 +8,14 @@ html, body {
     padding: 0;
 }
 
+h1, h2 {
+    margin-top: 0;
+}
+
+h2 {
+    color: coral;
+}
+
 body {
     padding-top: 50px;
     background-image: linear-gradient(135deg, var(--color-1) , var(--color-2));

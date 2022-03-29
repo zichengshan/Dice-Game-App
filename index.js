@@ -13,4 +13,7 @@ const messageEl = document.getElementById("message")
 const rollBtnEl = document.getElementById("rollBtn")
 const resetBtnEl = document.getElementById("resetBtn")
 
-
+rollBtnEl.addEventListener("click", function () {
+    let randomNumber = Math.floor(Math.random()*6)+1
+    console.log(randomNumber)
+})

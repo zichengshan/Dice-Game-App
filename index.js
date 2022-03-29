@@ -39,7 +39,7 @@ rollBtnEl.addEventListener("click", function () {
     round++
 
     // check if a player has won
-    if(round == 6){
+    if(round == 8){
         if(player1Score > player2Score){
             messageEl.innerText = "Player 1 has won!"
             messageEl.style.color = "darkblue"
@@ -63,7 +63,7 @@ resetBtnEl.addEventListener("click", function (){
     player2DiceEl.textContent = '-'
     player1Score = 0
     player2Score = 0
-    round = 0
+    round = 2
     player1Turn = true
     resetBtnEl.style.display = "none"
     rollBtnEl.style.display = "block"

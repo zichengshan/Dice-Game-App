@@ -18,13 +18,17 @@ rollBtnEl.addEventListener("click", function () {
 
     clearActive()
     if(player1Turn){
+        player1Score += randomNumber
         player2DiceEl.classList.add("active")
         player1DiceEl.innerText = `${randomNumber}`
+        player1ScoreboardEL.innerText = player1Score
         messageEl.innerText = "Player 2 Turn"
     }
     else{
+        player2Score += randomNumber
         player1DiceEl.classList.add("active")
         player2DiceEl.innerText = `${randomNumber}`
+        player2ScoreboardEL.innerText = player2Score
         messageEl.innerText = "Player 1 Turn"
     }
     player1Turn = !player1Turn

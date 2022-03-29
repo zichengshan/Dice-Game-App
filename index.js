@@ -21,16 +21,34 @@ rollBtnEl.addEventListener("click", function () {
         player1Score += randomNumber
         player2DiceEl.classList.add("active")
         player1DiceEl.innerText = `${randomNumber}`
+        player2DiceEl.innerText = "-"
         player1ScoreboardEL.innerText = player1Score
+
         messageEl.innerText = "Player 2 Turn"
     }
     else{
         player2Score += randomNumber
         player1DiceEl.classList.add("active")
         player2DiceEl.innerText = `${randomNumber}`
+        player1DiceEl.innerText = "-"
         player2ScoreboardEL.innerText = player2Score
         messageEl.innerText = "Player 1 Turn"
     }
+
+    // check if a player has won
+    if(player1Score > 20 || player2Score > 20){
+        if(player1Score > 20){
+            messageEl.innerText = "Player 1 has won! 💐"
+        }else
+        {
+            messageEl.innerText = "Player 2 has won! 💐"
+        }
+        resetBtnEl.style.display = "block"
+        rollBtnEl.style.display = "none"
+
+    }
+
+
     player1Turn = !player1Turn
 })
 
@@ -38,3 +56,5 @@ function clearActive() {
     player1DiceEl.classList.remove("active")
     player2DiceEl.classList.remove("active")
 }
+
+
